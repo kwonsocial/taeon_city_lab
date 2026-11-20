@@ -25,7 +25,11 @@ button,textarea{font:inherit;color:inherit}
 .brand b{font-size:1.08rem}
 .brand small{display:block;color:var(--muted);font-size:.8rem;line-height:1.3}
 .demo-badge{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:999px;background:var(--amber-soft);color:var(--amber);font-size:.75rem;font-weight:700;vertical-align:2px}
-.top-actions{display:flex;align-items:center;gap:10px}
+.top-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.wake-control{display:grid;gap:2px;max-width:260px;font-size:.85rem}
+.wake-control label{display:flex;align-items:center;gap:7px;min-height:44px;cursor:pointer}
+.wake-control input{width:18px;height:18px;accent-color:var(--blue)}
+.wake-control small{font-size:.75rem;line-height:1.4}
 .connection{display:flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:#f0f2f7;font-size:.85rem;color:var(--muted)}
 .connection .dot{width:9px;height:9px;border-radius:50%;background:#a0a7b6}
 .connection.ready{background:var(--green-soft);color:var(--green)}
@@ -153,6 +157,7 @@ footer details p{margin:6px 0 0}
   </div>
   <div class="top-actions">
     <span id="conn" class="connection" role="status"><span class="dot"></span><span id="connText">AI 연결 확인 중</span></span>
+    <div class="wake-control"><label><input id="wakeToggle" type="checkbox" checked> 화면 켜짐 유지</label><small id="wakeStatus" role="status" aria-live="polite">화면 유지 확인 중</small></div>
     <button id="resetBtn" class="button ghost" type="button">처음부터</button>
   </div>
 </header>
@@ -555,6 +560,68 @@ footer details p{margin:6px 0 0}
   renderDesign();
   renderAll();
   checkStatus();
+})();
+</script>
+<script id="screen-wake-lock">
+(() => {
+  "use strict";
+  const toggle = document.getElementById("wakeToggle");
+  const label = document.getElementById("wakeStatus");
+  let lock = null, pending = false, wanted = true, lastAttempt = 0;
+  const supported = !!(navigator.wakeLock && window.isSecureContext);
+  function display(text) {
+    label.textContent = text;
+    label.style.color = lock && !lock.released ? "var(--green)" : "var(--muted)";
+  }
+  async function acquire() {
+    if (!supported || !wanted || pending || document.visibilityState !== "visible" || (lock && !lock.released)) return;
+    pending = true;
+    lastAttempt = Date.now();
+    display("화면 유지 연결 중");
+    try {
+      const acquired = await navigator.wakeLock.request("screen");
+      if (!wanted || document.visibilityState !== "visible") {
+        await acquired.release();
+        return;
+      }
+      lock = acquired;
+      acquired.addEventListener("release", () => {
+        if (lock !== acquired) return;
+        lock = null;
+        display(wanted ? "화면 유지 일시 해제 · 화면을 터치해 주세요" : "화면 유지 꺼짐");
+      });
+      display("화면 켜짐 유지 중");
+    } catch {
+      display("화면 유지 불가 · 절전 모드와 브라우저 설정을 확인해 주세요");
+    } finally {
+      pending = false;
+      if (!wanted) display("화면 유지 꺼짐");
+    }
+  }
+  toggle.addEventListener("change", async () => {
+    wanted = toggle.checked;
+    if (wanted) await acquire();
+    else {
+      const previous = lock;
+      lock = null;
+      display("화면 유지 꺼짐");
+      if (previous) { try { await previous.release(); } catch {} }
+    }
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") acquire();
+  });
+  window.addEventListener("pageshow", acquire);
+  function retryOnInteraction() {
+    if (Date.now() - lastAttempt > 5000) acquire();
+  }
+  document.addEventListener("pointerup", retryOnInteraction, {passive:true});
+  document.addEventListener("keydown", retryOnInteraction);
+  if (!supported) {
+    toggle.checked = false;
+    toggle.disabled = true;
+    display("화면 유지 미지원 · 기기의 자동 잠금 설정을 확인해 주세요");
+  } else acquire();
 })();
 </script>
 </body>
