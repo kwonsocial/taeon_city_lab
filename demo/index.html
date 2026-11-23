@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>태온시 주민 인터뷰 체험 | 영파여자중학교</title>
-<meta name="description" content="중학교 사회 '내가 꿈꾸는 도시' 수업의 시연용 체험판. 학생 설계를 바탕으로 가상 주민에게 질문해 봅니다.">
+<title>태온시 2단계 설계 검토 체험 | 영파여자중학교</title>
+<meta name="description" content="중학교 사회 '내가 꿈꾸는 도시' 수업의 시연용 체험판. AI의 질문을 통해 학생 설계를 검토합니다.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23234fce%22%2F%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M14%2049V28h12V15h16v17h8v17H14Zm17-27v7h5v-7h-5Zm0%2012v7h5v-7h-5Zm-12%200v8h3v-8h-3Z%22%2F%3E%3C%2Fsvg%3E%0A">
 <script id="taeon-connection-config" type="application/json">{"apiBase":"https://taeon-city-ai.banyah01.workers.dev"}</script>
 <style>
@@ -153,7 +153,7 @@ footer details p{margin:6px 0 0}
     <span class="brand-icon" aria-hidden="true">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10h5v11"/><path d="M10 21V4h7v17"/><path d="M17 21v-7h3v7"/></svg>
     </span>
-    <span><b>태온시 주민 인터뷰</b><span class="demo-badge">체험판</span><small>중학교 사회 · 내가 꿈꾸는 도시</small></span>
+    <span><b>태온시 · 2단계 설계 검토</b><span class="demo-badge">체험판</span><small>중학교 사회 · 내가 꿈꾸는 도시</small></span>
   </div>
   <div class="top-actions">
     <span id="conn" class="connection" role="status"><span class="dot"></span><span id="connText">AI 연결 확인 중</span></span>
@@ -166,14 +166,14 @@ footer details p{margin:6px 0 0}
   <div class="hero">
     <div>
       <span class="eyebrow">TAEON CITY LAB · 체험</span>
-      <h1>학생의 설계, 주민은 어떻게 느낄까요?</h1>
-      <p>학생이 쓴 도시 설계를 읽고, 가상 주민에게 직접 질문해 보세요.</p>
+      <h1>AI는 질문하고, 설계자는 생각합니다.</h1>
+      <p>2단계 설계 검토 · AI의 질문을 읽고, 설계의 근거와 보완할 점을 설명해 보세요.</p>
     </div>
     <ol class="steps" id="steps" aria-label="체험 순서">
       <li data-step="1" class="on"><b>1</b>설계 읽기</li>
-      <li data-step="2"><b>2</b>주민 고르기</li>
-      <li data-step="3"><b>3</b>질문하기</li>
-      <li data-step="4"><b>4</b>생각해 보기</li>
+      <li data-step="2"><b>2</b>AI 질문 받기</li>
+      <li data-step="3"><b>3</b>내 생각 설명하기</li>
+      <li data-step="4"><b>4</b>설계 다시 보기</li>
     </ol>
   </div>
 
@@ -208,39 +208,17 @@ footer details p{margin:6px 0 0}
       </div>
     </section>
 
-    <!-- 오른쪽: 인터뷰 -->
-    <section class="card" aria-labelledby="interviewTitle">
-      <h2 id="interviewTitle"><span class="num">2</span>만나 볼 주민을 골라요</h2>
-      <p class="helper">같은 설계도 주민마다 다르게 느낄 수 있어요.</p>
-      <div class="residents" id="residents" role="radiogroup" aria-label="가상 주민 선택"></div>
-
-      <div class="intro" id="intro"></div>
-
-      <h2><span class="num">3</span>주민에게 질문해요</h2>
-      <p class="helper">예시 질문을 넣고 고쳐도 되고, 직접 적어도 돼요.</p>
-
-      <div class="chat" id="chat" aria-live="polite"></div>
+    <section class="card" aria-labelledby="reviewTitle">
+      <h2 id="reviewTitle"><span class="num">2</span>AI 질문으로 설계 검토하기</h2>
+      <p class="helper">AI가 설계를 읽고 한 번에 하나씩 질문해요. 해결 방안과 수정 여부는 내가 판단해요.</p>
+      <div class="intro"><span class="badge">2단계 · 설계 검토</span><p>왼쪽 예시 설계에는 아직 쓰지 않은 부분도 있어요. AI의 질문을 통해 문제와 해결 방안, 시설 위치와 이동 경로를 살펴보세요.</p><small>AI는 완성된 설계나 모범 답안을 대신 써 주지 않습니다.</small></div>
+      <button id="startBtn" class="button primary" type="button">AI 검토 질문 받기</button>
+      <div class="chat" id="chat" aria-live="polite" style="margin-top:16px"></div>
       <div class="status" id="status" role="status"></div>
-
-      <label class="field">
-        <span class="sr">주민에게 할 질문</span>
-        <textarea id="question" rows="3" maxlength="1600" placeholder="예: 병원에 다녀오실 때 무엇이 가장 불편하세요? 이 설계대로 바뀌면 어떨까요?"></textarea>
-      </label>
-      <div class="row end">
-        <span class="count" id="count"></span>
-        <button id="sampleBtn" class="button secondary" type="button">질문 예시 넣기</button>
-        <button id="sendBtn" class="button primary" type="button">주민에게 질문 보내기</button>
-      </div>
-      <p class="fine">주민의 답변은 기사에 근거한 AI 가상 역할극이며, 실제 주민의 증언이 아닙니다.</p>
-
-      <div class="think" id="think">
-        <h3><span class="num" style="background:#fff;color:var(--green)">4</span> 생각해 보기</h3>
-        <ul>
-          <li>주민의 답변 중 설계에 <b>반영할 의견</b>은 무엇인가요?</li>
-          <li><b>반영하지 않을 의견</b>이 있다면, 그 이유는 무엇인가요?</li>
-          <li>수업에서는 학생이 이 판단과 이유를 직접 쓰고, 종이 구조도를 고쳤어요.</li>
-        </ul>
-      </div>
+      <label class="field"><span>AI의 질문에 대한 나의 생각</span><textarea id="question" rows="4" maxlength="1600" placeholder="설계와 태온시 자료를 근거로 내 생각을 설명해 보세요." disabled></textarea></label>
+      <div class="row end"><span class="count" id="count"></span><button id="sendBtn" class="button primary" type="button" disabled>내 생각 보내기</button></div>
+      <p class="fine">AI가 만든 질문에도 오류가 있을 수 있어요. 기사·교과서·구조도를 기준으로 검토하세요.</p>
+      <div class="think" id="think"><h3>설계 다시 보기</h3><p>질문을 통해 새롭게 살펴본 부분은 무엇인가요? 설계에서 바꿀 점 또는 유지할 점과 그 이유를 생각하고, 왼쪽 ‘설계 고쳐 보기’에서 반영해 보세요.</p></div>
     </section>
   </div>
 </main>
@@ -249,7 +227,7 @@ footer details p{margin:6px 0 0}
   <span>이름·학번 등 개인정보를 입력하지 마세요. 대화는 이 화면에서만 유지되며, ‘처음부터’를 누르거나 5분 동안 사용하지 않으면 지워집니다.</span>
   <details>
     <summary>AI 사용과 데이터 안내</summary>
-    <p>질문을 보내면 설계 내용과 이 주민과의 대화가 Cloudflare Workers AI로 전송되어 처리됩니다. 이 사이트는 대화를 별도 보관하지 않으며 일별 AI 요청 횟수만 기록합니다. AI 답변에는 오류가 있을 수 있어요. 교과서와 학생의 구조도를 기준으로 확인해 주세요.</p>
+    <p>검토를 시작하거나 내 생각을 보내면 설계 내용과 검토 대화가 Cloudflare Workers AI로 전송되어 처리됩니다. 이 사이트는 대화를 별도 보관하지 않으며 일별 AI 요청 횟수만 기록합니다. AI 질문에는 오류가 있을 수 있어요. 교과서와 학생의 구조도를 기준으로 확인해 주세요.</p>
   </details>
   <span>© 영파여자중학교 교육용 웹앱 | <a href="https://sites.google.com/youngpa.sen.ms.kr/webapp-privacy" target="_blank" rel="noopener">개인정보처리방침</a></span>
 </footer>
@@ -266,9 +244,7 @@ footer details p{margin:6px 0 0}
     if (u.protocol === "https:" && u.pathname === "/" && !u.search && !u.hash) API = u.origin;
   } catch (e) {}
 
-  const MAX_PER_RESIDENT = 3;          // 주민별 질문 수 제한(무료 한도 보호)
-  const IDLE_RESET_MS = 5 * 60 * 1000; // 5분 미사용 시 자동 초기화
-
+  const IDLE_RESET_MS = 5 * 60 * 1000;
   /* ---------- 시연용 학생 설계 ---------- */
   const FIELDS = [
     ["problems", "발견한 문제 두 가지"],
@@ -291,275 +267,95 @@ footer details p{margin:6px 0 0}
     additional: "부도심을 만든다."
   };
 
-  /* ---------- 가상 주민 (원본 웹앱과 동일) ---------- */
-  const ICONS = {
-    Bus: '<path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/>',
-    GraduationCap: '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
-    Store: '<path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/>',
-    BriefcaseBusiness: '<path d="M12 12h.01"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M22 13a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/>'
-  };
-  const RESIDENTS = [
-    {id:"east",name:"동쪽 주민",detail:"자동차 없이 생활해요",icon:"Bus",
-     intro:"중앙의 시장과 병원에 갈 때 한 시간 간격의 버스를 이용해요. 오래 살아온 동네에서 계속 지내고 싶어요.",
-     questions:["병원에 다녀오실 때 어떤 점이 가장 불편하세요?","제가 제안한 교통 노선이 생기면 병원과 시장을 이용하는 데 어떤 도움이 될까요?","살던 동네를 고칠 때 꼭 지켜졌으면 하는 점은 무엇인가요?"]},
-    {id:"west",name:"서쪽 중학생",detail:"방과 후 공간이 필요해요",icon:"GraduationCap",
-     intro:"집과 학교는 서쪽에 있어요. 방과 후 문화·학습 공간을 이용하려면 중앙으로 이동해야 해요.",
-     questions:["학교가 끝난 뒤 문화·학습 공간을 이용할 때 어떤 점이 불편한가요?","제가 정한 시설 위치가 방과 후 생활에 어떤 도움이 될까요?","새 공간을 이용한 뒤 집으로 돌아갈 때 걱정되는 점은 무엇인가요?"]},
-    {id:"market",name:"전통시장 상인",detail:"평일에도 손님이 필요해요",icon:"Store",
-     intro:"주말에는 관광객이 오기도 하지만 평일에는 손님이 적어요. 꾸준히 시장을 이용하는 사람이 필요해요.",
-     questions:["평일에 장사하시면서 가장 어려운 점은 무엇인가요?","제가 제안한 새 시설이 시장에 어떤 영향을 줄 것 같으세요?","새 상업 공간이 생길 때 기대되는 점과 걱정되는 점은 무엇인가요?"]},
-    {id:"youth",name:"청년 구직자",detail:"이곳에 머물며 일하고 싶어요",icon:"BriefcaseBusiness",
-     intro:"탄광이 문을 닫고 일자리가 줄어 청년들이 다른 지역으로 떠나요. 지역에서 계속 일하며 살아갈 가능성이 궁금해요.",
-     questions:["태온시에서 일자리를 구하며 어떤 어려움을 느끼시나요?","제가 제안한 시설과 일자리에 대해 어떻게 생각하시나요?","이곳에 계속 살려면 일자리 외에 무엇이 필요하다고 느끼시나요?"]}
-  ];
-
-  /* ---------- 상태 ---------- */
   const $ = id => document.getElementById(id);
-  let status = null;          // /api/status 결과
-  let busy = false;
-  let design = {...SAMPLE_DESIGN};
-  let current = "east";
-  let chats = {};             // residentId -> [{role,text,source}]
-  let idleTimer = null;
-
-  const el = (tag, attrs = {}, text) => {
-    const n = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
-    if (text != null) n.textContent = text;
-    return n;
-  };
-  const svg = name => `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name]}</svg>`;
-
-  /* ---------- 설계 표시/수정 ---------- */
-  function renderDesign() {
-    const list = $("designList");
-    list.innerHTML = "";
-    for (const [key, label] of FIELDS) {
-      const v = (design[key] || "").trim();
-      const box = el("div", {class: "design-item" + (v ? "" : " empty")});
-      box.append(el("dt", {}, label), el("dd", {}, v || "작성하지 않음"));
-      list.append(box);
-    }
-    const changed = FIELDS.some(([k]) => (design[k] || "") !== (SAMPLE_DESIGN[k] || ""));
-    $("restoreBtn").hidden = !changed;
+  let ready = false, busy = false, complete = false, editing = false;
+  let design = {...SAMPLE_DESIGN}, draft = null, history = [], idleTimer;
+  const el = (tag, cls, text) => { const n=document.createElement(tag); if(cls)n.className=cls; if(text!=null)n.textContent=text; return n; };
+  const rounds = () => history.filter(m=>m.role==='assistant').length;
+  function message(kind,text) { $('status').className='status show '+kind; $('status').textContent=text; }
+  function clearMessage() { $('status').className='status'; $('status').textContent=''; }
+  function controls() {
+    const n=rounds();
+    $('startBtn').hidden=n>0;
+    $('startBtn').disabled=busy||!ready||editing;
+    $('question').disabled=busy||!n||complete||editing;
+    $('sendBtn').disabled=busy||!ready||!n||complete||editing||!$('question').value.trim();
+    $('sendBtn').textContent=n===3?'마지막 생각 기록하기':'내 생각 보내고 다음 질문 받기';
+    if(n===3)$('sendBtn').textContent='마지막 생각 기록하기';
+    $('count').textContent=complete?'검토 완료 · 설계를 다시 살펴보세요':`AI 검토 질문 ${n} / 3`;
+    $('editBtn').disabled=busy; $('restoreBtn').disabled=busy; $('resetBtn').disabled=busy;
+    $('think').classList.toggle('show',complete);
+    const stage=complete?4:n?3:2;
+    document.querySelectorAll('#steps li').forEach(li=>{li.classList.toggle('on',Number(li.dataset.step)===stage);li.classList.toggle('done',Number(li.dataset.step)<stage);});
   }
-  function buildEditor() {
-    const wrap = $("designEdit");
-    wrap.innerHTML = "";
-    for (const [key, label] of FIELDS) {
-      const f = el("label", {class: "field"});
-      const t = el("textarea", {rows: key === "problems" || key === "solutions" ? "3" : "2", maxlength: "2200"});
-      t.value = design[key] || "";
-      t.addEventListener("input", () => { design[key] = t.value; });
-      f.append(el("span", {}, label), t);
-      wrap.append(f);
-    }
-  }
-  $("editBtn").addEventListener("click", () => {
-    const card = $("designCard");
-    if (card.classList.contains("editing")) {
-      if (!design.problems.trim() || !design.solutions.trim()) {
-        showStatus("error", "문제와 해결 방안은 비워 둘 수 없어요.");
-        return;
-      }
-      card.classList.remove("editing");
-      $("editBtn").textContent = "설계 고쳐 보기";
-      renderDesign();
-      clearStatus();
-    } else {
-      buildEditor();
-      card.classList.add("editing");
-      $("editBtn").textContent = "고친 내용 적용";
-    }
-  });
-  $("restoreBtn").addEventListener("click", () => {
-    design = {...SAMPLE_DESIGN};
-    $("designCard").classList.remove("editing");
-    $("editBtn").textContent = "설계 고쳐 보기";
-    renderDesign();
-  });
-
-  /* ---------- 주민 ---------- */
-  function renderResidents() {
-    const box = $("residents");
-    box.innerHTML = "";
-    for (const r of RESIDENTS) {
-      const b = el("button", {type: "button", role: "radio", class: "resident" + (r.id === current ? " selected" : ""), "aria-checked": String(r.id === current)});
-      b.innerHTML = svg(r.icon);
-      b.append(el("strong", {}, r.name), el("small", {}, r.detail));
-      b.disabled = busy;
-      b.addEventListener("click", () => {
-        if (busy || r.id === current) return;
-        current = r.id;
-        $("question").value = "";
-        clearStatus();
-        renderAll();
-      });
-      box.append(b);
-    }
-    const r = RESIDENTS.find(x => x.id === current);
-    const intro = $("intro");
-    intro.innerHTML = "";
-    intro.append(el("span", {class: "badge"}, "가상 인터뷰 · " + r.name), el("p", {}, r.intro), el("small", {}, "기사에 근거한 역할극입니다. 실제 주민의 증언이 아닙니다."));
-  }
-
-  /* ---------- 대화 ---------- */
   function renderChat() {
-    const box = $("chat");
-    box.innerHTML = "";
-    const r = RESIDENTS.find(x => x.id === current);
-    for (const m of chats[current] || []) {
-      const a = el("article", {class: "msg " + m.role});
-      a.append(el("span", {class: "label"}, m.role === "user" ? "관람객 · 나의 질문" : "AI 가상 주민 · " + r.name), el("p", {}, m.text));
-      box.append(a);
+    $('chat').replaceChildren();
+    for(const m of history) {
+      const box=el('article','msg '+m.role);
+      box.append(el('span','label',m.role==='assistant'?'AI · 설계를 검토하는 질문':'관람객 · 나의 생각'),el('p','',m.text));
+      $('chat').append(box);
     }
-    box.scrollTop = box.scrollHeight;
+    $('chat').scrollTop=$('chat').scrollHeight;
+    controls();
   }
-  function askedCount(id) { return (chats[id] || []).filter(m => m.role === "user").length; }
-
-  function renderControls() {
-    const ready = !!(status && status.configured && status.capabilities && status.capabilities.residentAnswers);
-    const left = MAX_PER_RESIDENT - askedCount(current);
-    const q = $("question").value.trim();
-    $("sendBtn").disabled = busy || !ready || !q || left <= 0;
-    $("sampleBtn").disabled = busy || !!q || left <= 0;
-    $("question").disabled = busy || left <= 0;
-    $("count").textContent = left > 0 ? `이 주민에게 ${left}번 더 질문할 수 있어요` : "이 주민과의 인터뷰가 끝났어요. 다른 주민도 만나 보세요.";
-    $("think").classList.toggle("show", Object.values(chats).some(c => c.some(m => m.role === "assistant")));
-    // 단계 표시
-    const anyAnswer = Object.values(chats).some(c => c.some(m => m.role === "assistant"));
-    const anyQ = Object.values(chats).some(c => c.length) || !!q;
-    const stage = anyAnswer ? 4 : anyQ ? 3 : 2;
-    document.querySelectorAll("#steps li").forEach(li => {
-      const s = Number(li.dataset.step);
-      li.classList.toggle("on", s === stage);
-      li.classList.toggle("done", s < stage);
-    });
+  function renderDesign() {
+    $('designList').replaceChildren();
+    for(const [key,label] of FIELDS) {
+      const value=design[key].trim(), box=el('div','design-item'+(value?'':' empty'));
+      box.append(el('dt','',label),el('dd','',value||'작성하지 않음')); $('designList').append(box);
+    }
+    $('restoreBtn').hidden=!FIELDS.some(([k])=>design[k]!==SAMPLE_DESIGN[k]);
   }
-  function renderAll() { renderResidents(); renderChat(); renderControls(); }
-
-  function showStatus(kind, text) {
-    const s = $("status");
-    s.className = "status show " + kind;
-    s.innerHTML = "";
-    if (kind === "loading") s.append(el("span", {class: "spin", "aria-hidden": "true"}));
-    s.append(el("span", {}, text));
-  }
-  function clearStatus() { $("status").className = "status"; $("status").innerHTML = ""; }
-
-  $("question").addEventListener("input", renderControls);
-
-  $("sampleBtn").addEventListener("click", () => {
-    const r = RESIDENTS.find(x => x.id === current);
-    const used = new Set((chats[current] || []).filter(m => m.role === "user").map(m => m.text.trim()));
-    const sample = r.questions.find(x => !used.has(x));
-    if (!sample) { showStatus("info", "준비된 예시를 모두 사용했어요. 궁금한 점을 직접 적어 보세요."); return; }
-    $("question").value = sample;
-    showStatus("info", "예시 질문입니다. 설계에 맞게 고친 뒤 보내도 돼요.");
-    renderControls();
+  function clearReview() { history=[];complete=false;$('question').value='';renderChat(); }
+  $('editBtn').addEventListener('click',()=>{
+    if(busy)return;
+    if(editing) {
+      if(!draft.problems.trim()||!draft.solutions.trim()){message('error','문제와 해결 방안은 비워 둘 수 없어요.');return;}
+      const changed=FIELDS.some(([k])=>design[k]!==draft[k]);
+      design={...draft};editing=false;$('designCard').classList.remove('editing');$('editBtn').textContent='설계 고쳐 보기';renderDesign();
+      if(changed){clearReview();message('info','고친 설계를 적용했어요. 새 설계로 AI 검토 질문을 받을 수 있어요.');}else clearMessage();
+    } else {
+      draft={...design};editing=true;$('designEdit').replaceChildren();
+      for(const [k,label] of FIELDS){const f=el('label','field'),t=el('textarea');t.rows=3;t.maxLength=2200;t.value=draft[k];t.addEventListener('input',()=>draft[k]=t.value);f.append(el('span','',label),t);$('designEdit').append(f);}
+      $('designCard').classList.add('editing');$('editBtn').textContent='고친 내용 적용';message('info','설계를 수정하면 이전 검토 대화는 초기화됩니다. 고친 내용을 적용한 뒤 다시 검토하세요.');
+    }
+    controls();
   });
-
-  async function callAI(body) {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 90000);
-    try {
-      const res = await fetch(API + "/api/ai", {
-        method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(body), signal: ctrl.signal,
-        mode: "cors", credentials: "omit", redirect: "error", cache: "no-store"
-      });
-      let data;
-      try { data = await res.json(); } catch { throw new Error("서버에 연결하지 못했어요. 잠시 후 다시 시도해 주세요."); }
-      if (!res.ok) throw new Error(data && typeof data.error === "string" ? data.error : "AI 연결을 확인해 주세요.");
-      return data;
-    } catch (e) {
-      if (e && e.name === "AbortError") throw new Error("응답이 늦어지고 있어요. 잠시 후 다시 시도해 주세요.");
-      if (e instanceof TypeError) throw new Error("AI 서버에 연결하지 못했어요. 선생님께 알려 주세요.");
-      throw e;
-    } finally { clearTimeout(timer); }
+  function reset() {
+    if(busy)return;
+    design={...SAMPLE_DESIGN};editing=false;draft=null;$('designCard').classList.remove('editing');$('editBtn').textContent='설계 고쳐 보기';clearReview();renderDesign();clearMessage();controls();
   }
-
-  $("sendBtn").addEventListener("click", async () => {
-    const text = $("question").value.trim();
-    if (!text || busy) return;
-    if (!design.problems.trim() || !design.solutions.trim()) { showStatus("error", "문제와 해결 방안이 있어야 인터뷰할 수 있어요."); return; }
-    const rid = current;
-    const history = [...(chats[rid] || []), {role: "user", text}];
-    busy = true;
-    showStatus("loading", "주민이 질문을 읽고 답하고 있어요");
-    renderAll();
+  $('restoreBtn').addEventListener('click',reset);$('resetBtn').addEventListener('click',reset);
+  $('question').addEventListener('input',controls);
+  async function requestReview(next) {
+    busy=true;controls();message('loading','AI가 설계를 읽고 검토 질문을 만들고 있어요…');
+    const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),90000);
     try {
-      const data = await callAI({
-        action: "interview",
-        design: {...design},
-        history: history.map(({role, text}) => ({role, text})).slice(-10),
-        resident: rid
-      });
-      if (typeof data.answer !== "string" || !data.answer.trim()) throw new Error("주민 답변을 받지 못했어요. 다시 시도해 주세요.");
-      chats[rid] = [...history, {role: "assistant", text: data.answer.trim(), source: "ai"}];
-      if (rid === current) $("question").value = "";
-      clearStatus();
-    } catch (e) {
-      showStatus("error", e instanceof Error ? e.message : "처리하지 못했어요. 다시 시도해 주세요.");
-    } finally {
-      busy = false;
-      renderAll();
-    }
+      const res=await fetch(API+'/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'review',design:{...design},history:next.map(({role,text})=>({role,text})).slice(-10)}),signal:ctrl.signal,mode:'cors',credentials:'omit',cache:'no-store',redirect:'error'});
+      const data=await res.json();
+      if(!res.ok)throw new Error(typeof data.error==='string'?data.error:'AI 연결을 확인해 주세요.');
+      if(typeof data.question!=='string'||!data.question.trim())throw new Error('검토 질문을 받지 못했어요. 다시 시도해 주세요.');
+      history=[...next,{role:'assistant',text:data.question.trim()}];$('question').value='';clearMessage();
+    } catch(e) {message('error',e.name==='AbortError'?'응답이 늦어지고 있어요. 다시 시도해 주세요.':e instanceof TypeError?'연결을 확인하고 다시 눌러 주세요. 작성한 생각은 그대로 남아 있어요.':e.message);}
+    finally {clearTimeout(timer);busy=false;renderChat();bumpIdle();}
+  }
+  $('startBtn').addEventListener('click',()=>{if(ready&&!busy&&!editing&&!history.length)requestReview([]);});
+  $('sendBtn').addEventListener('click',()=>{
+    const text=$('question').value.trim();if(!ready||busy||editing||complete||!rounds()||!text)return;
+    const next=[...history,{role:'user',text}];
+    if(rounds()>=3){history=next;complete=true;$('question').value='';renderChat();message('info','세 질문에 대한 생각을 기록했어요. 어떤 부분을 수정하거나 유지할지 직접 판단해 보세요.');}
+    else requestReview(next);
   });
-
-  /* ---------- 초기화 ---------- */
-  function resetAll() {
-    if (busy) return;
-    design = {...SAMPLE_DESIGN};
-    current = "east";
-    chats = {};
-    $("question").value = "";
-    $("designCard").classList.remove("editing");
-    $("editBtn").textContent = "설계 고쳐 보기";
-    clearStatus();
-    renderDesign();
-    renderAll();
-    window.scrollTo({top: 0, behavior: "smooth"});
+  function bumpIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(()=>{if(busy)bumpIdle();else reset();},IDLE_RESET_MS);}
+  ['pointerdown','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bumpIdle,{passive:true}));
+  async function checkStatus(){
+    const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),20000);
+    try{const res=await fetch(API+'/api/status',{signal:ctrl.signal,cache:'no-store',credentials:'omit'});if(!res.ok)throw new Error();const data=await res.json();ready=!!(data.configured&&data.capabilities?.designReview);if(!ready)throw new Error();$('conn').className='connection ready';$('connText').textContent='AI 설계 검토 사용 가능';}
+    catch{$('conn').className='connection fail';$('connText').textContent='AI 연결 확인 필요';message('error','AI 검토에 연결하지 못했어요. 인터넷 연결을 확인한 뒤 페이지를 새로고침해 주세요.');}
+    finally{clearTimeout(timer);controls();}
   }
-  $("resetBtn").addEventListener("click", resetAll);
+  renderDesign();renderChat();checkStatus();bumpIdle();
 
-  function bumpIdle() {
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      const dirty = Object.keys(chats).length || $("question").value.trim() ||
-        FIELDS.some(([k]) => (design[k] || "") !== (SAMPLE_DESIGN[k] || ""));
-      if (dirty && !busy) resetAll();
-    }, IDLE_RESET_MS);
-  }
-  ["pointerdown", "keydown", "touchstart"].forEach(ev => document.addEventListener(ev, bumpIdle, {passive: true}));
-
-  /* ---------- 연결 상태 ---------- */
-  async function checkStatus() {
-    const conn = $("conn"), txt = $("connText");
-    if (!API) { conn.className = "connection fail"; txt.textContent = "AI 주소 미설정"; return; }
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 20000);
-    try {
-      const res = await fetch(API + "/api/status", {cache: "no-store", mode: "cors", credentials: "omit", signal: ctrl.signal});
-      if (!res.ok) throw new Error();
-      status = await res.json();
-      const ok = status.configured && status.capabilities && status.capabilities.residentAnswers;
-      conn.className = "connection " + (ok ? "ready" : "fail");
-      txt.textContent = ok ? "AI 주민 인터뷰 사용 가능" : "AI 서버 업데이트 필요";
-    } catch {
-      status = null;
-      conn.className = "connection fail";
-      txt.textContent = "AI 연결 안 됨";
-      showStatus("error", "AI 서버에 연결하지 못했어요. 이 페이지는 kwonsocial.github.io 주소에서 열어야 AI가 작동해요.");
-    } finally {
-      clearTimeout(timer);
-      renderControls();
-    }
-  }
-
-  renderDesign();
-  renderAll();
-  checkStatus();
 })();
 </script>
 <script id="screen-wake-lock">
@@ -626,3 +422,4 @@ footer details p{margin:6px 0 0}
 </script>
 </body>
 </html>
+
